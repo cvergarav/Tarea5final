@@ -12,6 +12,41 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ```
 
+
+
+**PREGUNTA 2**
+
+Se utilizaron las siguientes librerías:
+
+library(pdfetch)
+
+library(tidyverse)
+
+**Parte 1 y 2.a**
+
+1. Descargue el precio de las acciones de Microsoft (“MSFT”) y Apple (“AAPL”) desde Enero
+del 2000 hasta Agosto del 2018 con periodicidad mensual.
+
+2. Utilizando los datos de 2.1, construya una función que permita:
+a. Calcular los retornos
+```{r setup2, eval=FALSE}
+aapl=pdfetch_YAHOO("AAPL",fields="adjclose",from="2000-01-01",interval = "1mo")
+msft=pdfetch_YAHOO("MSFT",fields="adjclose",from="2000-01-01",interval = "1mo")
+
+funcion_finanzas<-function(df,retornos=c("yes","no")){
+if (retornos=="yes") {
+  ret1=log(df/(df-1))
+  print(ret1)
+}else  if(retornos== "no"){
+    ret2 = log((df-(df-1))/(df-1))
+    print(ret2)
+    
+}
+  }
+
+funcion_finanzas(aapl,"no")
+```
+
 **PREGUNTA 3**
 
 **Parte a caso 1**

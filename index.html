@@ -1584,6 +1584,33 @@ $(document).ready(function () {
 </div>
 
 
+<p><strong>PREGUNTA 2</strong></p>
+<p>Se utilizaron las siguientes librerías:</p>
+<p>library(pdfetch)</p>
+<p>library(tidyverse)</p>
+<p><strong>Parte 1 y 2.a</strong></p>
+<ol style="list-style-type: decimal">
+<li><p>Descargue el precio de las acciones de Microsoft (“MSFT”) y Apple (“AAPL”) desde Enero del 2000 hasta Agosto del 2018 con periodicidad mensual.</p></li>
+<li>Utilizando los datos de 2.1, construya una función que permita:</li>
+</ol>
+<ol style="list-style-type: lower-alpha">
+<li>Calcular los retornos</li>
+</ol>
+<pre class="r"><code>aapl=pdfetch_YAHOO(&quot;AAPL&quot;,fields=&quot;adjclose&quot;,from=&quot;2000-01-01&quot;,interval = &quot;1mo&quot;)
+msft=pdfetch_YAHOO(&quot;MSFT&quot;,fields=&quot;adjclose&quot;,from=&quot;2000-01-01&quot;,interval = &quot;1mo&quot;)
+
+funcion_finanzas&lt;-function(df,retornos=c(&quot;yes&quot;,&quot;no&quot;)){
+if (retornos==&quot;yes&quot;) {
+  ret1=log(df/(df-1))
+  print(ret1)
+}else  if(retornos== &quot;no&quot;){
+    ret2 = log((df-(df-1))/(df-1))
+    print(ret2)
+    
+}
+  }
+
+funcion_finanzas(aapl,&quot;no&quot;)</code></pre>
 <p><strong>PREGUNTA 3</strong></p>
 <p><strong>Parte a caso 1</strong></p>
 <p>Calcule E(b<sub>0</sub>),E(b<sub>1</sub>), var(b<sub>0</sub>) y var(b<sub>1</sub>) para muestras de tamaños 50, 100, 500, 1000. ¿Existe sesgo?, ¿Desaparece el sesgo a medida que el tama?o de la muestra aumenta?</p>
