@@ -12,7 +12,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ```
 
-**Pregunta 3**
+**PREGUNTA 3**
 
 **Parte a caso 1**
 
